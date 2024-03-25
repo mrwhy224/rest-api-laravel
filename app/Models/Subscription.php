@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Subscription extends Model
 {
     use HasFactory;
 
-    public function store(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Account::class);
     }
 }

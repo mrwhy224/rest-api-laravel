@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Account;
+use App\Models\Subscription;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Account::factory()->count(10)->hasSubscriptions(2)->hasStores(10)->hasUsers(10)->create();
     }
 }

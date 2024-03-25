@@ -2,16 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Store;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
- * @extends Factory<User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
  */
-class UserFactory extends Factory
+class AccountFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,11 +17,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'store_id'  =>  Store::factory(),
-            'username'  =>  $this->faker->userName(),
+            'phone' =>  $this->faker->phoneNumber(),
+            'mail'  =>  $this->faker->email(),
             'password'  => hash('sha256', $this->faker->password()),
-
         ];
     }
 }
-
