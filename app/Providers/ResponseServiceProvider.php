@@ -38,7 +38,7 @@ class ResponseServiceProvider extends ServiceProvider
                 'errors' => $errors,
             ];
 
-            return $factory->make($format);
+            return $factory->make($format, $code);
         });
     }
 }
