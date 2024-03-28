@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->integer('account_id')->index();
-            $table->integer('store_id')->index();
             $table->string('username',128);
             $table->string('password',64);
-            $table->unique(['store_id','username']);
+            $table->unique(['account_id','username']);
             $table->timestamps();
         });
     }

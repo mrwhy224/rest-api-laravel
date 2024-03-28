@@ -3,16 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\Account;
-use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
- * @extends Factory<User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Device>
  */
-class UserFactory extends Factory
+class DeviceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,13 +19,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
-            'account_id'  =>  Account::factory(),
-            'username'  =>  $this->faker->userName(),
-            'password'  => hash('sha256', $this->faker->password()),
+            'user_id'    =>  User::factory(),
+            'token_hash' => Hash::make($this->faker->password),
+            'unique_info'   =>  $this->faker->uuid(),
+            'device_info'   =>  json_encode(array('data'=>$this->faker->text()))
 
         ];
     }
 }
-

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Log;
-use App\Http\Requests\StoreLogRequest;
-use App\Http\Requests\UpdateLogRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 
-class LogController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class LogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLogRequest $request)
+    public function store(StoreUserRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class LogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Log $log)
+    public function show(User $user)
     {
         //
     }
@@ -43,7 +44,7 @@ class LogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Log $log)
+    public function edit(User $user)
     {
         //
     }
@@ -51,7 +52,7 @@ class LogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLogRequest $request, Log $log)
+    public function update(UpdateUserRequest $request, User $user)
     {
         //
     }
@@ -59,7 +60,7 @@ class LogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Log $log)
+    public function destroy(User $user)
     {
         //
     }

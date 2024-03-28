@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Account::factory()->count(10)->hasSubscriptions(2)->hasStores(10)->hasUsers(10)->create();
+        User::factory()->count(10)->hasDevices(2)->create();
     }
 }

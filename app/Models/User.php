@@ -9,8 +9,13 @@ class User extends Model
 {
     use HasFactory;
 
-    public function store(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Account::class);
+    }
+
+    public function devices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Device::class);
     }
 }
