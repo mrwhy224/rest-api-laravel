@@ -21,7 +21,7 @@ class TokenIsValid
 
         $dev = Device::where('unique_info', $request->unique_info)->first();
         if ($dev && Hash::check($request->header(Config::get('app.token_header_name')), $dev->token_hash)) {
-            $request->device = $dev;
+            $request->merge(['device' => $dev]);
             return $next($request);
         }
         return  response()->error(401,"The authentication information used is incorrect");
