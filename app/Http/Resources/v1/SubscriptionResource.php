@@ -20,7 +20,7 @@ class SubscriptionResource extends JsonResource
             'type'=>$this->type,
             'period'=>$this->period,
             'remaining_time'=>$this->remaining_time,
-            'subscription_info'=>$this->subscription_info,
+            'subscription_info'=>json_decode($this->subscription_info),
             'is_active'=>$this->is_active,
         ];
     }
