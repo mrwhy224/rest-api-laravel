@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response;
 
 class TokenIsValid
 {
@@ -21,8 +20,10 @@ class TokenIsValid
 
 
         $dev = Device::where('unique_info', $request->unique_info)->first();
-        if ($dev && Hash::check($request->header(Config::get('app.token_header_name')), $dev->token_hash))
+        if ($dev && Hash::check($request->header(Config::get('app.token_header_name')), $dev->token_hash)) {
+            $request->device = $dev;
             return $next($request);
+        }
         return  response()->error(401,"The authentication information used is incorrect");
     }
 }

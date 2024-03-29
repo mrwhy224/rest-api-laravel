@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\v1\DeviceResource;
 use App\Models\Device;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,15 +16,17 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function get_me(Request $request)
     {
-        //
+        $data = [
+            'device'=> new DeviceResource($request->device),
+        ];
+        return $data;
     }
     public function login(Request $request)
     {
 
         //  toDo: Check the user completely
-
 
         $validator = Validator::make($request->all(), [
             'username' => 'required|max:64',
@@ -61,53 +62,5 @@ class UserController extends Controller
                 return response()->error(404, 'The authentication information used is incorrect');
         }
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreUserRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateUserRequest $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
-
 
 }
