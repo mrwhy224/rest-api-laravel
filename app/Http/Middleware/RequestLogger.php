@@ -22,7 +22,7 @@ class RequestLogger
             'RESPONSE' => $response->getContent()
         ];
 
-        $dev = DB::table('devices')->where('token_hash', $request->header(Config::get('app.token_header_name')))
+        $dev = DB::table('devices')->where('unique_info', $request->unique_info)
             ->join('users', 'users.id', '=', 'devices.user_id')
             ->join('accounts', 'accounts.id', '=', 'users.account_id')
             ->select( 'devices.id as device', 'accounts.id as account')
